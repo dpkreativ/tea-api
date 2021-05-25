@@ -27,7 +27,13 @@ const newTea = (req, res, next) => {
 
 // Get all tea
 const getAllTea = (req, res, next) => {
-  res.json({ message: "GET all tea" });
+  Tea.find({}, (err, data) => {
+    if (err) {
+      return res.json({ Error: err });
+    } else {
+      return res.json(data);
+    }
+  });
 };
 
 // Delete all tea
