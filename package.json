@@ -1,0 +1,20 @@
+{
+  "name": "tea-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dpkreativ/tea-api.git"
+  },
+  "keywords": [],
+  "author": "Divine Orji",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dpkreativ/tea-api/issues"
+  },
+  "homepage": "https://github.com/dpkreativ/tea-api#readme"
+}
