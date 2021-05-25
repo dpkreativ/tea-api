@@ -1,3 +1,5 @@
+const Tea = require("../models/tea");
+
 // Create new tea
 const newTea = (req, res, next) => {
   res.json({ message: "POST new tea" }); // dummy function for now
