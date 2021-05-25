@@ -1,6 +1,7 @@
 const express = require("express");
 const routes = require("./routes/tea"); // import routes
 const mongoose = require("mongoose"); // import mongoose
+require("dotenv").config(); // import dotenv
 const app = express();
 
 // connect to database
