@@ -2,7 +2,27 @@ const Tea = require("../models/tea");
 
 // Create new tea
 const newTea = (req, res, next) => {
-  res.json({ message: "POST new tea" }); // dummy function for now
+  Tea.findOne({ name: req.body.name }, (err, data) => {
+    if (err) {
+      return res.json({ Error: err });
+    } else if (data === null) {
+      const newTea = new Tea({
+        name: req.body.name,
+        image: req.body.image,
+        description: req.body.description,
+        keywords: req.body.keywords,
+        origin: req.body.origin,
+        brew_time: req.body.brew_time,
+        temperature: req.body.temperature,
+      });
+      newTea.save((err, data) => {
+        if (err) return res.json({ Error: err });
+        return res.json(data);
+      });
+    } else {
+      return res.json({ message: "Tea already exists" });
+    }
+  });
 };
 
 // Get all tea
