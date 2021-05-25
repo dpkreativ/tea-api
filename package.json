@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/dpkreativ/tea-api/issues"
   },
-  "homepage": "https://github.com/dpkreativ/tea-api#readme"
+  "homepage": "https://github.com/dpkreativ/tea-api#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
