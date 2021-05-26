@@ -3,8 +3,10 @@ const express = require("express");
 const routes = require("./routes/tea"); // import routes
 const mongoose = require("mongoose"); // import mongoose
 const helmet = require("helmet"); // import helmet
+const compression = require("compression"); // import compression
 const app = express();
 app.use(helmet());
+app.use(compression());
 
 // connect to database
 mongoose.connect(
