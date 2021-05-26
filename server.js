@@ -16,6 +16,8 @@ mongoose.connect(
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useCreateIndex: true,
+    keepAlive: 300000,
+    connectTimeoutMS: 30000,
   },
   (err) => {
     if (err) return console.log(`Error: ${err}`);
