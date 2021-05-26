@@ -30,6 +30,9 @@ mongoose.connect(
 app.use(express.json()); // to parse incoming requests with JSON payloads
 app.use("/", routes); // use the routes
 app.use("/uploads", express.static("./uploads")); // make uploads folder publicly accessible
+app.route("/").get((req, res) => {
+  res.sendFile(`${process.cwd()} /index.html`);
+});
 
 const listener = app.listen(process.env.PORT || 5000, () => {
   console.log(`App is listening on port ${listener.address().port}`);
