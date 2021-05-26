@@ -38,7 +38,13 @@ const getAllTea = (req, res, next) => {
 
 // Delete all tea
 const deleteAllTea = (req, res, next) => {
-  res.json({ message: "DELETE all tea" });
+  Tea.deleteMany({}, (err, data) => {
+    if (err) {
+      return res.json({ message: "Complete delete failed" });
+    } else {
+      return res.json({ message: "complete delete successful" });
+    }
+  });
 };
 
 // Get specific tea
