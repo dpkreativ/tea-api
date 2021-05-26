@@ -2,7 +2,9 @@ require("dotenv").config(); // import dotenv
 const express = require("express");
 const routes = require("./routes/tea"); // import routes
 const mongoose = require("mongoose"); // import mongoose
+const helmet = require("helmet"); // import helmet
 const app = express();
+app.use(helmet());
 
 // connect to database
 mongoose.connect(
