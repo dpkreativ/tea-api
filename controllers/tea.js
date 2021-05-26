@@ -49,7 +49,8 @@ const deleteAllTea = (req, res, next) => {
 
 // Get specific tea
 const getTea = (req, res, next) => {
-  Tea.findOne({ name: req.params.name }, (err, data) => {
+  let name = req.params.name;
+  Tea.findOne({ name: name }, (err, data) => {
     if (err) {
       return res.json({ Error: err });
     } else if (data === null) {
