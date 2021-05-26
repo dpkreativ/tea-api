@@ -49,7 +49,13 @@ const deleteAllTea = (req, res, next) => {
 
 // Get specific tea
 const getTea = (req, res, next) => {
-  res.json({ message: "GET specific tea" });
+  Tea.findOne({ name: req.params.name }, (err, data) => {
+    if (err) {
+      return res.json({ Error: err });
+    } else {
+      return res.json(data);
+    }
+  });
 };
 
 // Add comment for tea
