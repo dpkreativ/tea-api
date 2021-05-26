@@ -63,7 +63,34 @@ const getTea = (req, res, next) => {
 
 // Add comment for tea
 const teaComment = (req, res, next) => {
-  res.json({ message: "POST tea commment" });
+  let name = req.params.name; // get the tea
+  let newComment = req.body.comment; // get the comment
+
+  // create the comment object to push to array
+  const comment = {
+    text: newComment,
+    date: new Date(),
+  };
+
+  // find the tea and add the comment to it
+  Tea.findOne({ name: name }, (err, data) => {
+    if (err) {
+      return res.json({ Error: err });
+    } else if (!name || !newComment) {
+      return res.json("Tea does not exist");
+    } else {
+      // add comment to comments array
+      data.comments.push(comment);
+
+      // Save changes to db
+      data.save((err) => {
+        if (err) {
+          return res.json({ message: "Comment failed to add.", Error: err });
+        }
+        return res.json(data);
+      });
+    }
+  });
 };
 
 // Delete specific tea
