@@ -11,6 +11,8 @@ const storage = multer.diskStorage({
   },
 });
 
+const uploadImg = multer({ storage: storage }).single("image");
+
 // Create new tea
 const newTea = (req, res, next) => {
   Tea.findOne({ name: req.body.name }, (err, data) => {
@@ -19,7 +21,7 @@ const newTea = (req, res, next) => {
     } else if (data === null) {
       const newTea = new Tea({
         name: req.body.name,
-        image: req.body.image,
+        image: req.file.path,
         description: req.body.description,
         keywords: req.body.keywords,
         origin: req.body.origin,
@@ -123,4 +125,5 @@ module.exports = {
   getTea,
   teaComment,
   deleteTea,
+  uploadImg,
 };
