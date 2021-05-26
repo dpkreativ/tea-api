@@ -52,6 +52,8 @@ const getTea = (req, res, next) => {
   Tea.findOne({ name: req.params.name }, (err, data) => {
     if (err) {
       return res.json({ Error: err });
+    } else if (data === null) {
+      return res.json({ message: "Tea does not exist" });
     } else {
       return res.json(data);
     }
