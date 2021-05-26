@@ -95,7 +95,14 @@ const teaComment = (req, res, next) => {
 
 // Delete specific tea
 const deleteTea = (req, res, next) => {
-  res.json({ message: "DELETE specific tea" });
+  let name = req.params.name;
+  Tea.deleteOne({ name: name }, (err, data) => {
+    if (err) {
+      return res.json({ Error: err });
+    } else {
+      return res.json("Tea deleted successfully");
+    }
+  });
 };
 
 module.exports = {
