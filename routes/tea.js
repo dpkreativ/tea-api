@@ -1,11 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const teaController = require("../controllers/tea");
-const multer = require("multer");
-const upload = multer();
 
 // Post new tea
-router.post("/tea", upload.none(), teaController.newTea);
+router.post("/tea", teaController.uploadImg, teaController.newTea);
 
 // Get all tea
 router.get("/tea", teaController.getAllTea);
