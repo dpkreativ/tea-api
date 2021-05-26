@@ -1,4 +1,15 @@
 const Tea = require("../models/tea");
+const multer = require("multer");
+
+// create storage for image uploads
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "./uploads");
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
 
 // Create new tea
 const newTea = (req, res, next) => {
